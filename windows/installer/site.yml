@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+   - name: copy file
+     win_copy:
+          src: setup.exe
+          dest: C:\
+   - name: install
+     win_package:
+          path: C:\setup.exe
+          productid: auto
+          state: present
+     register: output
+   - debug: var=output
